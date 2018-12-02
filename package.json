@@ -1,0 +1,17 @@
+{
+  "name": "lein-solc-truffle",
+  "version": "1.0.0",
+  "description": "Using lein-solc for compiling truffle artifact",
+  "author": "fbielejec",
+  "license": "Eclipse Public License",
+  "homepage": "https://github.com/fbielejec/lein-solc-truffle",
+  "scripts": {
+    "ganache": "ganache-cli -p 8549 -l 8000000 -d -m district0x",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --network ganache --reset",
+    "console": "truffle console --network ganache"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.1.8"
+  }
+}
