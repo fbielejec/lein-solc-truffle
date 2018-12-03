@@ -1,23 +1,25 @@
-const {copy, linkBytecode} = require ("./utils.js");
+const {copy, requireContract, linkBytecode} = require ("./utils.js");
 const fs = require('fs');
 const {contracts_build_directory} = require ('../truffle.js');
 
-const TestContract = artifacts.require("TestContract");
+var TestContract = artifacts.require ('TestContract');
 
-// copy artifact for placeholder replacements
-copy ("MutableForwarder", "TestContractForwarder", contracts_build_directory);
-const TestContractForwarder = artifacts.require("TestContractForwarder");
+// copy artifacts for placeholder replacement
+copy ({srcName: "MutableForwarder", dstName: "TestContractForwarder", contracts_build_directory: contracts_build_directory});
+var TestContractForwarder = artifacts.require ('TestContractForwarder');
 
 const forwarderTargetPlaceholder = "beefbeefbeefbeefbeefbeefbeefbeefbeefbeef";
 
 module.exports = function(deployer, network, accounts) {
 
   const address = accounts [0];
-  const gas = 4612388;
-  const opts = {gas: gas, from: address};
+  const opts = {gas: 4e6, from: address};
 
-  console.log(contracts_build_directory);
-
+  deployer.then (() => {
+    console.log ("@@@ using Web3 version:", web3.version.api);
+    console.log ("@@@ using address", address);
+  });
+  
   deployer.deploy (TestContract, opts)
     .then (instance => {
       linkBytecode(TestContractForwarder, forwarderTargetPlaceholder, instance.address);

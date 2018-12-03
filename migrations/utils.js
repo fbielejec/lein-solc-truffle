@@ -1,4 +1,5 @@
 const fs = require('fs');
+// const contract = require("truffle-contract");
 
 const utils = {
 
@@ -6,13 +7,31 @@ const utils = {
     return array[array.length - 1];
   },
 
-  copy: (srcName, dstName, contracts_build_directory, network, address) => {
+  // requireContract: ({contractName, contracts_build_directory, provider}) => {
+  //   var {abi, bytecode, sourcePath, networks_, schemaVersion, updatedAt} = require(contracts_build_directory + contractName + '.json');
+  //   const Contract = contract({
+  //     contractName: contractName,
+  //     abi: abi,
+  //     unlinked_binary: bytecode,
+  //     sourcePath: sourcePath,
+  //     networks: networks_,
+  //     schemaVersion: schemaVersion,
+  //     updatedAt: updatedAt
+  //   });
+  //   Contract.setProvider(provider);
+  //   return Contract;
+  // },
 
-    let buildPath = __dirname + '/../build/contracts/'
-    if (contracts_build_directory) {
-      buildPath = contracts_build_directory;
-    } 
-        
+  copy: ({srcName, dstName, contracts_build_directory, network, address}) => {
+
+    // let buildPath = //__dirname +
+    //     '/../build/contracts/'
+    // if (contracts_build_directory) {
+    //   buildPath = '/../' + contracts_build_directory;
+    // }
+
+    let buildPath = contracts_build_directory;
+
     const srcPath = buildPath + srcName + '.json';
     const dstPath = buildPath + dstName + '.json';
     const data = require(srcPath);

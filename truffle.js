@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = {
-  contracts_build_directory: __dirname + '/resources/public/contracts/build/',
+  // build_path: __dirname + "/resources/public/contracts/build/",
+  contracts_build_directory: __dirname + '/build/contracts/',
   networks: {
     ganache: {
       host: 'localhost',

@@ -7,9 +7,10 @@
   ;;:plugins [[lein-solc "1.0.2"]]
 
   :solc {:src-path "contracts"
-         :build-path "./resources/public/contracts/build/"
-         :truffle-artifacts true
-         :solc-err-only true
-         :byte-count true
-         :contracts ["Migrations.sol" "TestContract.sol" "proxy/MutableForwarder.sol"]
+         :build-path "/build/contracts/" ;;"resources/public/contracts/build/"
+         :abi? false
+         :bin? false
+         :truffle-artifacts? true
+         :contracts ["Migrations.sol" "TestContract.sol"
+                     "proxy/MutableForwarder.sol" "proxy/DelegateProxy.sol"]
          :verbose false})
