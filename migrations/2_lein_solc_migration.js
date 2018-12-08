@@ -1,4 +1,4 @@
-const {copy, requireContract, linkBytecode} = require ("./utils.js");
+const {copy, linkBytecode} = require ("./utils.js");
 const fs = require('fs');
 const {contracts_build_directory} = require ('../truffle.js');
 
